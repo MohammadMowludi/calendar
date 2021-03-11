@@ -4,9 +4,10 @@
     <string name="code">ja</string>
 
     <string name="app_name">ペルシャ暦</string>
-    <string name="cancel">止める</string>
     <string name="widget_name">ペルシャ暦</string>
     <string name="widget_mini_name">ペルシャ暦</string>
+
+    <string name="cancel">止める</string>
     <string name="latitude">緯度</string>
     <string name="longitude">経度</string>
     <string name="settings">設定</string>

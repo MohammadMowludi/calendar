@@ -16,6 +16,7 @@ const val LANG_JA = "ja"
 const val LANG_AZB = "azb"
 const val LANG_CKB = "ckb"
 const val LANG_UR = "ur"
+const val LANG_DE = "de"
 
 const val LAST_CHOSEN_TAB_KEY = "LastChosenTab"
 

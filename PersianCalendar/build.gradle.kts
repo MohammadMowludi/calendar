@@ -39,36 +39,25 @@ android {
             (if (("git status -s".runCommand() ?: "").isBlank()) "" else "-dirty")
 
     defaultConfig {
-        applicationId = "com.byagowi.persiancalendar"
+	// آی دی برنامه خود را اینجا قرار دهید . 
+         applicationId = "com.siga.calendar"
         minSdkVersion(17)
         targetSdkVersion(30)
-        versionCode = 632
-        versionName = "6.3.2"
+        versionCode = 2
+        versionName = "1.1.2"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        resConfigs("en", "fa", "ckb", "ar", "ur", "ps", "glk", "azb", "ja")
-        setProperty("archivesBaseName", "PersianCalendar-$versionName-$gitVersion")
+		// زبان آلمانی به برنامه اضافه شده است احتمالا 100 درصد آلمانی نباشد در آینده ترجمه المانی دقیق تر خواهد شد 
+         resConfigs("en", "fa", "ckb", "ar", "ur", "ps", "glk", "azb", "ja" ,"de")
+        setProperty("archivesBaseName", "comsigacalendar-$versionName-$gitVersion")
         multiDexEnabled = false
     }
 
     signingConfigs {
-        create("nightly") {
-            storeFile = rootProject.file("nightly.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-        }
+   // کلید خودتان را اینجا قرار دهید
     }
 
     buildTypes {
-        create("nightly") {
-            signingConfig = signingConfigs.getByName("nightly")
-            versionNameSuffix = "-${defaultConfig.versionName}-$gitVersion-nightly"
-            applicationIdSuffix = ".nightly"
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            isMinifyEnabled = true
-            isShrinkResources = true
-        }
 
         getByName("debug") {
             versionNameSuffix = "-${defaultConfig.versionName}-$gitVersion"
@@ -76,11 +65,18 @@ android {
         }
 
         getByName("release") {
+		// تنظیمات رلیز خود را اینجا قرار دهید.
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             isMinifyEnabled = true
             isShrinkResources = true
         }
     }
+	// تنظیمات آی دها و سایر محتویات مختلف کدهای خود را اینجا قرار دهید 
+	    flavorDimensions  "com_siga_calendar"
+    productFlavors {
+        create("com_siga_calendar") {
+     dimension = "com_siga_calendar"
+        }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

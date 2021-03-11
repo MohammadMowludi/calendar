@@ -7,6 +7,7 @@
     <string name="app_name">التقويم الفارسي</string>
     <string name="widget_name">التقويم الفارسي</string>
     <string name="widget_mini_name">التقويم الفارسي (صغير)</string>
+
     <string name="closeDrawer">إغلاق</string>
     <string name="openDrawer">فتح</string>
     <string name="accept">موافق</string>

@@ -4,9 +4,10 @@
     <string name="code">glk</string>
 
     <string name="app_name">فارسي تقويم</string>
-    <string name="cancel">لغو</string>
     <string name="widget_name">فارسي تقويم</string>
     <string name="widget_mini_name">فارسي تقويم (کۊجدانه)</string>
+
+    <string name="cancel">لغو</string>
     <string name="latitude">عرضˇجؤغرافیایي</string>
     <string name="longitude">طۊلˇجؤغرافیایي</string>
     <string name="settings">تنظیمات</string>

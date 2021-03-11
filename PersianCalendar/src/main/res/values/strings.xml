@@ -3,11 +3,43 @@
 
     <string name="code">en</string>
 
+
+
+
+    <string name="links1" translatable="false">
+                        git links:
+                        \n
+https://github.com/cheshmakfreeapp/calendar
+\n
+pic links:
+\n
+https://pixabay.com/
+https://pixabay.com/photos/maldives-palm-tree-hammock-beach-3220702/
+https://pixabay.com/photos/wheat-field-sunset-horizon-clouds-640960/
+https://pixabay.com/photos/spring-bird-bird-tit-spring-blue-2295434/
+https://pixabay.com/photos/iceland-arctic-fox-fox-animal-1979445/
+<a href='https://pngtree.com/so/calendar-icons'>calendar icons png from pngtree.com</a>
+    </string>
+
+    <string name="links2" translatable="false">Application Links</string>
+
+    <string name="links3" translatable="false">Links</string>
+
+
+
+
+
+
+
+
+
+
     <!--Global-->
     <string name="app_name">Persian Calendar</string>
     <string name="widget_name">Persian Calendar</string>
     <string name="widget_mini_name">Persian Calendar (mini)</string>
     <string name="widget_age_name">Persian Calendar (age)</string>
+
     <string name="closeDrawer">Close</string>
     <string name="openDrawer">Open</string>
     <string name="accept">OK</string>
@@ -50,6 +82,7 @@ AminBakhtiyari: Amin Bakhtiyari
 SCR-IR: SCR-IR
 MMeshkiny: Mohsen Meshkini"</string>
     <string name="about_help_subtitle" translatable="false">این نسخهٔ سال %s-%s است.</string>
+
     <string name="about_help_sum" translatable="false">"برای اطمینان از صحت مناسبت‌های قمری سال‌های بعد نیاز است چند ماه پیش از تحویل سال، اگر توسعهٔ برنامه هنوز ادامه داشت، برنامه را به‌روز کنید چرا که آن مناسبت‌های قمری تا زمان انتشار نسخهٔ جدید به صورت رسمی در تقویم کشور مشخص نشده‌اند. در صورتی که توسعهٔ برنامه در سالی که از برنامه استفاده می‌کنید ادامه نداشت، پیشنهاد می‌شود مراقب صحت تعطیلی‌ها به کمک منابع دیگر باشید. مناسبت‌های خورشیدی رسمی برای همه سال‌ها اعمال شده است ولی ممکن است در سالی که آن مناسبت را در تقویم مشاهده می‌کنید، آن مناسبت تعطیل رسمی نبوده یا دیگر نباشد.
 
 مناسبت‌های این برنامه با تقویم ایران و افغانستان تنظیم شده‌است. ممکن است در کشورهای دیگر این مناسبت‌ها کاربرد نداشته باشند ولی در امکانات مختلف برنامه سعی شده جامعیت برنامه حفظ شود. به همین منظور می‌توانید با تنظیم مناسبت‌ها آن را به حالت دلخواه خود درآورید.
@@ -84,6 +117,16 @@ MMeshkiny: Mohsen Meshkini"</string>
     <string name="scorpio_emoji" translatable="false">♏</string>
     <string name="sagittarius_emoji" translatable="false">♐</string>
     <string name="not_set_time" translatable="false">--:--</string>
+
+
+
+
+
+
+
+
+
+
 
     <!--Navigation drawers-->
     <string name="calendar">Calendar</string>

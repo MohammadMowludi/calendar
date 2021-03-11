@@ -4,9 +4,10 @@
     <string name="code">ur</string>
 
     <string name="app_name">فارسی تقویم</string>
-    <string name="cancel">بند کریں</string>
     <string name="widget_name">فارسی تقویم</string>
     <string name="widget_mini_name">فارسی تقویم (خورد)</string>
+
+    <string name="cancel">بند کریں</string>
     <string name="latitude">عرض البلد</string>
     <string name="longitude">طول البلد</string>
     <string name="settings">ترتیبات</string>

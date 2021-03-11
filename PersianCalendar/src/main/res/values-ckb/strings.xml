@@ -4,9 +4,10 @@
     <string name="code">ckb</string>
 
     <string name="app_name">ڕۆژژمێری فارسی</string>
-    <string name="cancel">ھەڵوەشاندنەوە</string>
     <string name="widget_name">ڕۆژژمێری فارسی</string>
     <string name="widget_mini_name">ڕۆژژمێری فارسی (بچووک)</string>
+
+    <string name="cancel">ھەڵوەشاندنەوە</string>
     <string name="latitude">پاناییی جوگرافی</string>
     <string name="longitude">درێژاییی جوگرافی</string>
     <string name="settings">ڕێکخستن</string>

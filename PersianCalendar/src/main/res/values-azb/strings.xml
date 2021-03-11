@@ -7,6 +7,7 @@
     <string name="cancel">لغو</string>
     <string name="widget_name">فارسجا تقویم</string>
     <string name="widget_mini_name">فارسجا تقویم (بالاجا)</string>
+
     <string name="latitude">جغرافیایی ائنلم</string>
     <string name="longitude">جغرافیایی بوْیلام</string>
     <string name="settings">تنظیم‌لر</string>
@@ -77,7 +78,7 @@
     <string name="stop">ساخلاندی</string>
     <string name="goto_date">بو تاریخه گئت</string>
     <string name="go">گئت</string>
-    <string name="pleasewaitgps">بیرآز دایانین... بیر دقیقه سونرا نتیجه اولمازسا، جی‌پی‌اس‌ین آچیق اولماسین‌دان مطمئن اولون. اونو آچماق دا یارارسیز اولسا، گمان‌کی باشقا سئچنئک‌لری تست ائتملی‌سینیز.</string>
+    <string name="pleasewaitgps">بیرآز دایانین… بیر دقیقه سونرا نتیجه اولمازسا، جی‌پی‌اس‌ین آچیق اولماسین‌دان مطمئن اولون. اونو آچماق دا یارارسیز اولسا، گمان‌کی باشقا سئچنئک‌لری تست ائتملی‌سینیز.</string>
     <string name="notify_date_lock_screen">اعلان‌لاری کلیدلی صفحه‌ده گؤستر</string>
     <string name="notify_date_lock_screen_summary">سیستم‌ده تنظیم اولسا ایشلیئر</string>
     <string name="warn_if_events_not_set">موناسیبت‌لری فعال ائتمک اۆچون تنظیماتا گئدین</string>

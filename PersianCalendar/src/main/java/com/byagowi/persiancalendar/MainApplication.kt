@@ -8,7 +8,7 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        ReleaseDebugDifference.mainApplication(this)
+       // ReleaseDebugDifference.mainApplication(this)
         initUtils(applicationContext)
     }
 

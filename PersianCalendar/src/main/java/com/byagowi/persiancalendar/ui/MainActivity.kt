@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
-        ReleaseDebugDifference.startLynxListenerIfIsDebug(this)
+        //ReleaseDebugDifference.startLynxListenerIfIsDebug(this)
         initUtils(this)
 
         // Don't apply font override to English and Japanese locale
