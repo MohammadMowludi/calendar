@@ -2,27 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/owghat_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
+    android:background="?attr/selectableItemBackgroundBorderless"
     android:orientation="vertical">
 
-    <!-- sun content -->
     <com.byagowi.persiancalendar.ui.calendar.times.SunView
         android:id="@+id/sunView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="10dp" />
 
+    <com.byagowi.persiancalendar.ui.common.MoonView
+        android:id="@+id/moon_view"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="28dp"
+        android:visibility="gone" />
+
     <!-- Times -->
-    <com.byagowi.persiancalendar.ui.calendar.times.UntouchableRecyclerView
-        android:id="@+id/timesRecyclerView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/times"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:paddingTop="@dimen/padding_item"
-        android:paddingBottom="@dimen/padding_item" />
+        android:paddingBottom="@dimen/padding_item">
+
+        <com.byagowi.persiancalendar.ui.calendar.times.TimesFlow
+            android:id="@+id/times_flow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:flow_wrapMode="chain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,14 +56,13 @@
             android:textSize="@dimen/text_size_title"
             tools:text="City" />
 
-        <ImageView
-            android:id="@+id/more_owghat"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            app:srcCompat="@drawable/ic_keyboard_arrow_down"
+        <com.byagowi.persiancalendar.ui.common.ArrowView
+            android:id="@+id/expansion_arrow"
+            android:layout_width="@dimen/arrow_size"
+            android:layout_height="@dimen/arrow_size"
+            android:importantForAccessibility="no"
             app:tint="?attr/colorAccent" />
 
     </LinearLayout>
 
 </LinearLayout>
-

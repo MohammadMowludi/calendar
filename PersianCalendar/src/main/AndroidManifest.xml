@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.byagowi.persiancalendar">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- remove the permission taken by work manager -->
     <uses-permission
         android:name="android.permission.ACCESS_NETWORK_STATE"
         tools:node="remove" />
 
+    <!-- don't ever add requiredFeature to them even the fact the app functions without them anyway,
+         this is how 6.6.1 permissions getting was ruined -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <uses-feature
         android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor"
         android:required="false" />
     <uses-feature
         android:name="android.hardware.telephony"
@@ -33,26 +39,52 @@
     <uses-feature
         android:name="android.hardware.location.gps"
         android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.live_wallpaper"
+        android:required="false" />
+    <!-- Used for 3d globe view in map screen, a niche feature -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="false" />
 
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
+        android:banner="@mipmap/ic_banner"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/LightTheme"
+        android:theme="@style/SplashScreenTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <activity
             android:name=".ui.MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
+            android:configChanges="keyboardHidden|screenSize|screenLayout"
             android:exported="true"
             android:launchMode="singleTop"
-            android:resizeableActivity="true">
+            android:resizeableActivity="true"
+            tools:ignore="UnusedAttribute">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
 
             <meta-data
@@ -61,11 +93,16 @@
         </activity>
 
         <activity
-            android:name=".ui.AthanActivity"
+            android:name=".ui.athan.AthanActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
             android:excludeFromRecents="true"
+            android:exported="false"
             android:launchMode="singleTop"
-            android:theme="@style/FullscreenTheme" />
+            android:showForAllUsers="true"
+            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
+            android:theme="@style/AthanTheme"
+            android:turnScreenOn="true" />
 
         <receiver
             android:name=".service.BroadcastReceivers"
@@ -76,14 +113,19 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ui.preferences.widgetnotification.WidgetConfigurationActivity">
+        <activity
+            android:name=".ui.settings.widgetnotification.WidgetConfigurationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".ui.preferences.agewidget.AgeWidgetConfigureActivity"
+            android:name=".ui.settings.agewidget.AgeWidgetConfigureActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
+            android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
@@ -105,7 +147,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider.semConfigureActivity"
-                android:value="com.byagowi.persiancalendar.ui.preferences.widgetnotification.WidgetConfigurationActivity" />
+                android:value="com.byagowi.persiancalendar.ui.settings.widgetnotification.WidgetConfigurationActivity" />
         </receiver>
 
         <receiver
@@ -123,7 +165,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider.semConfigureActivity"
-                android:value="com.byagowi.persiancalendar.ui.preferences.widgetnotification.WidgetConfigurationActivity" />
+                android:value="com.byagowi.persiancalendar.ui.settings.widgetnotification.WidgetConfigurationActivity" />
         </receiver>
 
         <receiver
@@ -141,7 +183,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider.semConfigureActivity"
-                android:value="com.byagowi.persiancalendar.ui.preferences.widgetnotification.WidgetConfigurationActivity" />
+                android:value="com.byagowi.persiancalendar.ui.settings.widgetnotification.WidgetConfigurationActivity" />
         </receiver>
 
         <receiver
@@ -159,7 +201,89 @@
 
             <meta-data
                 android:name="android.appwidget.provider.semConfigureActivity"
-                android:value="com.byagowi.persiancalendar.ui.preferences.widgetnotification.WidgetConfigurationActivity" />
+                android:value="com.byagowi.persiancalendar.ui.settings.widgetnotification.WidgetConfigurationActivity" />
+        </receiver>
+
+        <!--        <receiver-->
+        <!--            android:name=".Widget4x1dateOnly"-->
+        <!--            android:exported="false"-->
+        <!--            android:icon="@mipmap/ic_launcher"-->
+        <!--            android:label="@string/widget_name">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+        <!--            </intent-filter>-->
+
+        <!--            <meta-data-->
+        <!--                android:name="android.appwidget.provider"-->
+        <!--                android:resource="@xml/persiancalendar_provider4x1_date_only" />-->
+
+        <!--            <meta-data-->
+        <!--                android:name="android.appwidget.provider.semConfigureActivity"-->
+        <!--                android:value="com.byagowi.persiancalendar.ui.settings.widgetnotification.WidgetConfigurationActivity" />-->
+        <!--        </receiver>-->
+
+        <receiver
+            android:name=".WidgetSunView"
+            android:exported="false"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/sun_view">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/persiancalendar_provider_sun_view" />
+
+            <meta-data
+                android:name="android.appwidget.provider.semConfigureActivity"
+                android:value="com.byagowi.persiancalendar.ui.settings.widgetnotification.WidgetConfigurationActivity" />
+        </receiver>
+
+        <receiver
+            android:name=".WidgetMonthView"
+            android:exported="false"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/calendar">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/persiancalendar_provider_month_view" />
+
+            <meta-data
+                android:name="android.appwidget.provider.semConfigureActivity"
+                android:value="com.byagowi.persiancalendar.ui.settings.widgetnotification.WidgetConfigurationActivity" />
+        </receiver>
+
+        <receiver
+            android:name=".WidgetMap"
+            android:exported="false"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/map">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/persiancalendar_provider_map" />
+        </receiver>
+
+        <receiver
+            android:name=".WidgetMoon"
+            android:exported="false"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/moon">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/persiancalendar_provider_moon" />
         </receiver>
 
         <receiver
@@ -177,26 +301,61 @@
 
             <meta-data
                 android:name="android.appwidget.provider.semConfigureActivity"
-                android:value="com.byagowi.persiancalendar.ui.preferences.agewidget.WidgetAgeConfigureActivity" />
+                android:value="com.byagowi.persiancalendar.ui.settings.agewidget.WidgetAgeConfigureActivity" />
         </receiver>
 
         <service
             android:name=".service.ApplicationService"
             android:enabled="true"
+            android:exported="false"
             android:label="Calendar Service" />
 
         <service
             android:name=".service.AthanNotification"
+            android:exported="false"
             android:label="Athan Service" />
 
         <service
             android:name=".service.PersianCalendarTileService"
-            android:icon="@drawable/day18"
+            android:exported="true"
+            android:icon="@drawable/day19"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
+        </service>
+
+        <service
+            android:name=".service.PersianCalendarWallpaperService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/wallpaper" />
+        </service>
+
+        <service
+            android:name=".service.PersianCalendarDreamService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.dream"
+                android:resource="@xml/dream" />
         </service>
 
     </application>

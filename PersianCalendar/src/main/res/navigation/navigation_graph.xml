@@ -8,68 +8,168 @@
     <activity
         android:id="@+id/main_activity"
         android:name="com.byagowi.persiancalendar.ui.MainActivity"
-        android:label="Main Activity"
+        android:label="@string/app_name"
         tools:layout="@layout/activity_main" />
 
     <fragment
         android:id="@+id/calendar"
-        android:name="com.byagowi.persiancalendar.ui.calendar.CalendarFragment"
-        android:label="Calendar Fragment"
+        android:name="com.byagowi.persiancalendar.ui.calendar.CalendarScreen"
+        android:label="@string/calendar"
         tools:layout="@layout/fragment_calendar">
         <action
-            android:id="@+id/navigate_to_converter"
-            app:destination="@id/converter" />
-        <action
-            android:id="@+id/navigate_to_about"
-            app:destination="@id/about" />
+            android:id="@+id/navigate_to_self"
+            app:destination="@id/calendar"
+            app:popUpTo="@id/calendar"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/navigate_to_settings"
-            app:destination="@id/settings" />
+            app:destination="@id/settings"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim">
+            <argument
+                android:name="tab"
+                android:defaultValue="0"
+                app:argType="integer" />
+            <argument
+                android:name="preferenceKey"
+                android:defaultValue=""
+                app:argType="string" />
+        </action>
         <action
-            android:id="@+id/navigate_to_compass"
-            app:destination="@id/compass" />
+            android:id="@+id/action_calendar_to_astronomy"
+            app:destination="@id/astronomy"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim">
+            <argument
+                android:name="day_offset"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/converter"
-        android:name="com.byagowi.persiancalendar.ui.converter.ConverterFragment"
-        android:label="Converter Fragment"
+        android:name="com.byagowi.persiancalendar.ui.converter.ConverterScreen"
+        android:label="@string/date_converter"
         tools:layout="@layout/fragment_converter" />
 
     <fragment
         android:id="@+id/compass"
-        android:name="com.byagowi.persiancalendar.ui.compass.CompassFragment"
-        android:label="Compass Fragment"
+        android:name="com.byagowi.persiancalendar.ui.compass.CompassScreen"
+        android:label="@string/compass"
         tools:layout="@layout/fragment_compass">
         <action
             android:id="@+id/action_compass_to_level"
-            app:destination="@id/level" />
+            app:destination="@id/level"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim" />
+        <action
+            android:id="@+id/action_compass_to_map"
+            app:destination="@id/map"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim" />
     </fragment>
 
     <fragment
         android:id="@+id/level"
-        android:name="net.androgames.level.LevelFragment"
-        android:label="Level Fragment" />
+        android:name="com.byagowi.persiancalendar.ui.level.LevelScreen"
+        android:label="@string/level">
+        <action
+            android:id="@+id/action_level_to_compass"
+            app:destination="@id/compass"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/settings"
-        android:name="com.byagowi.persiancalendar.ui.preferences.PreferencesFragment"
-        android:label="Settings Fragment"
-        tools:layout="@layout/fragment_calendar" />
+        android:name="com.byagowi.persiancalendar.ui.settings.SettingsScreen"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_calendar">
+        <argument
+            android:name="tab"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="preferenceKey"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/about"
-        android:name="com.byagowi.persiancalendar.ui.about.AboutFragment"
-        android:label="About Fragment"
+        android:name="com.byagowi.persiancalendar.ui.about.AboutScreen"
+        android:label="@string/about"
         tools:layout="@layout/fragment_about">
         <action
-            android:id="@+id/action_about_to_deviceinfo"
-            app:destination="@id/deviceInformation" />
+            android:id="@+id/action_about_to_device_information"
+            app:destination="@id/deviceInformation"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim" />
+        <action
+            android:id="@+id/action_about_to_licenses"
+            app:destination="@id/licenses"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim" />
     </fragment>
 
     <fragment
         android:id="@+id/deviceInformation"
-        android:name="com.byagowi.persiancalendar.ui.about.DeviceInformationFragment"
-        android:label="Device Information Fragment" />
+        android:name="com.byagowi.persiancalendar.ui.about.DeviceInformationScreen"
+        android:label="@string/device_information" />
+
+    <fragment
+        android:id="@+id/licenses"
+        android:name="com.byagowi.persiancalendar.ui.about.LicensesScreen"
+        android:label="@string/licenses" />
+
+    <fragment
+        android:id="@+id/astronomy"
+        android:name="com.byagowi.persiancalendar.ui.astronomy.AstronomyScreen"
+        android:label="@string/astronomy">
+        <argument
+            android:name="day_offset"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_astronomy_to_map"
+            app:destination="@id/map"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.byagowi.persiancalendar.ui.map.MapScreen"
+        android:label="@string/map">
+        <action
+            android:id="@+id/action_map_to_sky_renderer"
+            app:destination="@id/sky_renderer"
+            app:enterAnim="@anim/nav_enter_anim"
+            app:exitAnim="@anim/nav_exit_anim"
+            app:popEnterAnim="@anim/nav_enter_anim"
+            app:popExitAnim="@anim/nav_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sky_renderer"
+        android:name="com.byagowi.persiancalendar.ui.map.SkyRendererScreen"
+        android:label="Sky Renderer Screen" />
 
 </navigation>

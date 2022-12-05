@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/description"
@@ -21,7 +19,7 @@
 
     <Button
         android:id="@+id/reset_link"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/AppTextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -41,5 +39,12 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         tools:listitem="@layout/shift_work_item" />
+
+    <!-- Just to trick androidx to show soft keyboard, https://stackoverflow.com/a/67527063 -->
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/empty"
+        android:visibility="gone" />
 
 </LinearLayout>

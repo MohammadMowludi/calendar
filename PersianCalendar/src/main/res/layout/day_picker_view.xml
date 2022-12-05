@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minWidth="400dp"
-    android:orientation="vertical"
-    android:padding="@dimen/view_padding">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/calendarTypesBox"
-        android:layout_width="match_parent"
+    <HorizontalScrollView
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal" />
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="8dp">
+
+        <com.byagowi.persiancalendar.ui.common.DayPickerButtonsGroup
+            android:id="@+id/calendars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true" />
+
+    </HorizontalScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,6 +37,7 @@
             android:padding="4dp">
 
             <TextView
+                android:id="@+id/dayTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -39,6 +49,7 @@
                 android:id="@+id/dayPicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layerType="hardware"
                 android:textSize="@dimen/text_size_description" />
 
         </LinearLayout>
@@ -52,6 +63,7 @@
             android:padding="4dp">
 
             <TextView
+                android:id="@+id/monthTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -63,6 +75,7 @@
                 android:id="@+id/monthPicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layerType="hardware"
                 android:textSize="@dimen/text_size_description" />
 
         </LinearLayout>
@@ -76,6 +89,7 @@
             android:padding="4dp">
 
             <TextView
+                android:id="@+id/yearTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -87,6 +101,7 @@
                 android:id="@+id/yearPicker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layerType="hardware"
                 android:textSize="@dimen/text_size_description" />
 
         </LinearLayout>
