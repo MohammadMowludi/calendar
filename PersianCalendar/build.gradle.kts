@@ -5,7 +5,7 @@ fun String.execute() = ProcessGroovyMethods.execute(this)
 val Process.text: String? get() = ProcessGroovyMethods.getText(this)
 
 plugins {
-    id("com.android.application")
+    id("com.android.application")  rtryery
     kotlin("android")
     id("androidx.navigation.safeargs.kotlin")
     id("io.github.persiancalendar.appbuildplugin") apply true
